@@ -7,5 +7,3 @@
 
 🔭 I’m currently working on:
 - [Realtime BPM Analyzer](https://github.com/dlepaux/realtime-bpm-analyzer)
-
-![Profile views](https://gpvc.arturio.dev/dlepaux)
