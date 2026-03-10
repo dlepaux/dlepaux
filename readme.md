@@ -1,8 +1,10 @@
 ## David Lepaux
 
-**Engineering Lead** in Geneva, Switzerland. 13+ years building and scaling web platforms for luxury, sports, and enterprise clients.
+**Engineering Lead** in Geneva, Switzerland. 13+ years building web platforms across luxury, sports, e-commerce, and media.
 
-I've shipped production systems for **Patek Philippe**, **FIBA**, and Swiss enterprises — leading teams, shaping architecture, and caring about the details that make software last. Outside of work, I run a self-hosted homelab and tinker with real-time audio processing.
+Equal parts architect and maker — I own technical direction, lead teams, and still write code every day. I've consolidated fragmented platforms, orchestrated large-scale migrations, and turned complexity into systems that last. Outside of work, I run self-hosted infrastructure and tinker with real-time audio processing.
+
+**Worked with** FIBA · Visilab · Patek Philippe · Lausanne Tourisme · EVAM
 
 ---
 
