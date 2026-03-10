@@ -1,10 +1,25 @@
-### Hi there 👋
+## David Lepaux
 
-📈 GitHub Activity
+**Engineering Lead** in Geneva, Switzerland. 13+ years building and scaling web platforms for luxury, sports, and enterprise clients.
 
-![David's Github stats](https://github-readme-stats.vercel.app/api/top-langs/?username=dlepaux&layout=compact&show_icons=true&theme=dark)
-![David's GitHub stats](https://github-readme-stats.vercel.app/api?username=dlepaux\&rank_icon=github&theme=dark)
+I've shipped production systems for **Patek Philippe**, **FIBA**, and Swiss enterprises — leading teams, shaping architecture, and caring about the details that make software last. Outside of work, I run a self-hosted homelab and tinker with real-time audio processing.
 
+---
 
-🔭 I’m currently working on:
-- [Realtime BPM Analyzer](https://github.com/dlepaux/realtime-bpm-analyzer)
+### Open Source
+
+[**realtime-bpm-analyzer**](https://github.com/dlepaux/realtime-bpm-analyzer) — Zero-dependency TypeScript library for real-time BPM detection via the Web Audio API. Used in music players, DJ tools, and streaming services.
+
+[![npm downloads](https://img.shields.io/npm/dm/realtime-bpm-analyzer?style=flat&label=downloads&color=CB3837)](https://www.npmjs.com/package/realtime-bpm-analyzer) [![stars](https://img.shields.io/github/stars/dlepaux/realtime-bpm-analyzer?style=flat&color=yellow)](https://github.com/dlepaux/realtime-bpm-analyzer)
+
+[**allegro-project**](https://github.com/dlepaux/allegro-project) — Next generation of BPM analysis: from browser extensions to AI-powered detection (ongoing).
+
+---
+
+### Stack
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black) ![Next.js](https://img.shields.io/badge/Next.js-000?style=flat&logo=next.js&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat&logo=ansible&logoColor=white)
+
+---
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/david-lepaux) [![Website](https://img.shields.io/badge/david.lepaux.com-000?style=flat&logo=safari&logoColor=white)](https://david.lepaux.com)
