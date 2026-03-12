@@ -4,7 +4,7 @@
 
 Equal parts architect and maker — I own technical direction, lead teams, and still write code every day. I've consolidated fragmented platforms, orchestrated large-scale migrations, and turned complexity into systems that last. Outside of work, I run self-hosted infrastructure and tinker with real-time audio processing.
 
-**Worked with** FIBA · Visilab · Patek Philippe · Lausanne Tourisme · EVAM
+**Worked with** FIBA · Visilab · Patek Philippe · Lausanne Tourisme · Publishing Factory
 
 ---
 
