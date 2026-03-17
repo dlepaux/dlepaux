@@ -18,8 +18,6 @@ Equal parts architect and maker — I own technical direction, lead teams, and s
 
 [**hexrack-sbc**](https://github.com/dlepaux/hexrack-sbc) — Modular 3D-printable honeycomb rack for cooling and mounting SBCs. Parametric OpenSCAD design with stackable enclosures, (Noctua) fan mounts, and board-specific panels for Rock 5B+ and Raspberry Pi 5.
 
-[![stars](https://img.shields.io/github/stars/dlepaux/hexrack-sbc?style=flat&color=yellow)](https://github.com/dlepaux/hexrack-sbc)
-
 ---
 
 ### Stack
