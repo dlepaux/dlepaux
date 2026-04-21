@@ -18,7 +18,7 @@ Libraries and tools I've put into the world on my own terms. Some small, some ru
 
 [![npm downloads](https://img.shields.io/npm/dm/realtime-bpm-analyzer?style=flat&label=downloads&color=CB3837)](https://www.npmjs.com/package/realtime-bpm-analyzer) [![stars](https://img.shields.io/github/stars/dlepaux/realtime-bpm-analyzer?style=flat&color=yellow)](https://github.com/dlepaux/realtime-bpm-analyzer)
 
-[**multilinguarr**](https://github.com/dlepaux/multilinguarr) — Dual-language audio enforcement (EN+FR) for Radarr/Sonarr/Jellyfin stacks. Webhook-driven TypeScript service, symlink-based library management.
+[**multilinguarr**](https://github.com/dlepaux/multilinguarr) — Multi-audio enforcement (one primary + N alternate languages) for Radarr/Sonarr/Jellyfin stacks. Webhook-driven Rust service, symlink-based library management.
 
 [![stars](https://img.shields.io/github/stars/dlepaux/multilinguarr?style=flat&color=yellow)](https://github.com/dlepaux/multilinguarr)
 
