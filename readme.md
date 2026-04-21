@@ -38,7 +38,7 @@ Libraries and tools I've put into the world on my own terms. Some small, some ru
 
 **By volume** (public + private repos)
 
-![Top Languages](https://stats.lepaux.com/api/top-langs/?username=dlepaux&count_private=true&layout=compact&hide=html,css&theme=github_dark&card_width=800&v=2)
+![Top Languages](https://stats.lepaux.com/api/top-langs/?username=dlepaux&count_private=true&layout=compact&hide=html,css&theme=github_dark&card_width=846&v=2)
 
 ---
 
