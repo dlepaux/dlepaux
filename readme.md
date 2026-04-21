@@ -36,6 +36,10 @@ Libraries and tools I've put into the world on my own terms. Some small, some ru
 
 ![Rust](https://img.shields.io/badge/Rust-000?style=flat&logo=rust&logoColor=white) ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat&logo=ansible&logoColor=white)
 
+**By volume** (public + private repos)
+
+![Top Languages](https://stats.lepaux.com/api/top-langs/?username=dlepaux&count_private=true&layout=compact&hide=html,css&theme=github_dark)
+
 ---
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/david-lepaux) [![Website](https://img.shields.io/badge/david.lepaux.com-000?style=flat&logo=safari&logoColor=white)](https://david.lepaux.com)
