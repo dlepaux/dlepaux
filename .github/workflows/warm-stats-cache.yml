@@ -1,0 +1,40 @@
+name: Warm stats cache
+
+on:
+  schedule:
+    # Every 3h — nginx cache on srv-swiss has a 4h TTL, so this keeps
+    # the entry fresh indefinitely without a cold-miss window.
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+    # Manual trigger — use after editing the stats URL in readme.md
+    # (card_width, theme, hide=, etc.) to warm the new cache key without
+    # waiting for the next scheduled run.
+
+jobs:
+  warm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract stats URL from readme
+        id: url
+        run: |
+          url=$(grep -oE 'https://stats\.lepaux\.com/api/[^)]+' readme.md | head -1)
+          if [ -z "$url" ]; then
+            echo "::error::No stats URL found in readme.md"
+            exit 1
+          fi
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Warming: $url"
+
+      - name: Warm cache
+        run: |
+          # Backend can take 5-8s on cold miss (GitHub API enumeration).
+          # --max-time 30 is generous; --retry covers the rare flap.
+          curl -sS \
+            --max-time 30 \
+            --retry 2 --retry-delay 10 --retry-all-errors \
+            -o /dev/null \
+            -w "status=%{http_code} time=%{time_total}s size=%{size_download}B\n" \
+            "${{ steps.url.outputs.url }}"
