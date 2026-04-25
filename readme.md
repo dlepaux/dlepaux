@@ -22,6 +22,10 @@ Libraries and tools I've put into the world on my own terms. Some small, some ru
 
 [![stars](https://img.shields.io/github/stars/dlepaux/multilinguarr?style=flat&color=yellow)](https://github.com/dlepaux/multilinguarr)
 
+[**docker-exporter**](https://github.com/dlepaux/docker-exporter) — Lightweight Rust Prometheus exporter for Docker container metrics. Built for ARM64 + cgroup v2, multi-arch image on GHCR.
+
+[![stars](https://img.shields.io/github/stars/dlepaux/docker-exporter?style=flat&color=yellow)](https://github.com/dlepaux/docker-exporter)
+
 [**hexrack-sbc**](https://github.com/dlepaux/hexrack-sbc) — Modular 3D-printable honeycomb rack for cooling and mounting SBCs. Parametric OpenSCAD, stackable enclosures, Noctua fan mounts, board-specific panels for Rock 5B+ and Raspberry Pi 5.
 
 ---
