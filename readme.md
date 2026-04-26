@@ -26,6 +26,10 @@ Libraries and tools I've put into the world on my own terms. Some small, some ru
 
 [![stars](https://img.shields.io/github/stars/dlepaux/docker-exporter?style=flat&color=yellow)](https://github.com/dlepaux/docker-exporter)
 
+[**jellyfin-exporter**](https://github.com/dlepaux/jellyfin-exporter) — Rust Prometheus exporter for Jellyfin: sessions, transcoding details with reasons, library stats, exporter-self pipeline health. Resilient by design — retry + circuit breaker, optional Bearer auth, multi-arch image on GHCR.
+
+[![stars](https://img.shields.io/github/stars/dlepaux/jellyfin-exporter?style=flat&color=yellow)](https://github.com/dlepaux/jellyfin-exporter)
+
 [**hexrack-sbc**](https://github.com/dlepaux/hexrack-sbc) — Modular 3D-printable honeycomb rack for cooling and mounting SBCs. Parametric OpenSCAD, stackable enclosures, Noctua fan mounts, board-specific panels for Rock 5B+ and Raspberry Pi 5.
 
 ---
