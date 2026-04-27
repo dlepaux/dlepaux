@@ -1,10 +1,8 @@
 ## David Lepaux
 
-**Engineering Lead** in Geneva, Switzerland. 13 years building web platforms — luxury, sports, e-commerce, media.
+**Tech Lead** in Geneva, Switzerland. 13 years building web platforms — luxury, sports, e-commerce, media.
 
 Started writing code professionally in 2013. Still hands-on by choice — web day to day (React, Next.js, TypeScript), systems work on the side (Rust, lower-level primitives, the parts you only see when the runtime stops helping).
-
-Depth over hype. Every time.
 
 **Worked with** FIBA · Visilab · Patek Philippe · Lausanne Tourisme · Publishing Factory
 
@@ -12,25 +10,11 @@ Depth over hype. Every time.
 
 ### Open Source
 
-Libraries and tools I've put into the world on my own terms. Some small, some running in production for years. All of them taught me something.
-
 [**realtime-bpm-analyzer**](https://github.com/dlepaux/realtime-bpm-analyzer) — Zero-dependency TypeScript library for real-time BPM detection via the Web Audio API. Used in music players, DJ tools, and streaming services.
 
 [![npm downloads](https://img.shields.io/npm/dm/realtime-bpm-analyzer?style=flat&label=downloads&color=CB3837)](https://www.npmjs.com/package/realtime-bpm-analyzer) [![stars](https://img.shields.io/github/stars/dlepaux/realtime-bpm-analyzer?style=flat&color=yellow)](https://github.com/dlepaux/realtime-bpm-analyzer)
 
-[**multilinguarr**](https://github.com/dlepaux/multilinguarr) — Multi-audio enforcement (one primary + N alternate languages) for Radarr/Sonarr/Jellyfin stacks. Webhook-driven Rust service, symlink-based library management.
-
-[![stars](https://img.shields.io/github/stars/dlepaux/multilinguarr?style=flat&color=yellow)](https://github.com/dlepaux/multilinguarr)
-
 [**docker-exporter**](https://github.com/dlepaux/docker-exporter) — Lightweight Rust Prometheus exporter for Docker container metrics. Built for ARM64 + cgroup v2, multi-arch image on GHCR.
-
-[![stars](https://img.shields.io/github/stars/dlepaux/docker-exporter?style=flat&color=yellow)](https://github.com/dlepaux/docker-exporter)
-
-[**jellyfin-exporter**](https://github.com/dlepaux/jellyfin-exporter) — Rust Prometheus exporter for Jellyfin: sessions, transcoding details with reasons, library stats, exporter-self pipeline health. Resilient by design — retry + circuit breaker, optional Bearer auth, multi-arch image on GHCR.
-
-[![stars](https://img.shields.io/github/stars/dlepaux/jellyfin-exporter?style=flat&color=yellow)](https://github.com/dlepaux/jellyfin-exporter)
-
-[**hexrack-sbc**](https://github.com/dlepaux/hexrack-sbc) — Modular 3D-printable honeycomb rack for cooling and mounting SBCs. Parametric OpenSCAD, stackable enclosures, Noctua fan mounts, board-specific panels for Rock 5B+ and Raspberry Pi 5.
 
 ---
 
