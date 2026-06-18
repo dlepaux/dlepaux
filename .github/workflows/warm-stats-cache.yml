@@ -1,17 +1,22 @@
-name: Warm stats cache
+name: Stats cache canary
+
+# Cache WARMING moved to srv-apps (homelab) on 2026-06-18: a systemd timer there
+# (homelab roles/stats-cache-warmer) warms this exact URL hourly from a normal
+# homelab egress. GitHub-hosted runners egress from Azure ranges that Hostinger's
+# edge intermittently DROPS at the packet level, so the old warm job flapped red
+# on transient connection timeouts that had nothing to do with the service. This
+# job is now only an external-vantage reachability canary: it NEVER fails on an
+# unreachable host (that's Hostinger's flaky edge, not our problem) — only on a
+# genuine backend error (HTTP 5xx).
 
 on:
   schedule:
-    # Every 3h — nginx cache on srv-swiss has a 4h TTL, so this keeps
-    # the entry fresh indefinitely without a cold-miss window.
+    # Every 3h — external reachability heartbeat; warming itself is on srv-apps.
     - cron: '0 */3 * * *'
   workflow_dispatch:
-    # Manual trigger — use after editing the stats URL in readme.md
-    # (card_width, theme, hide=, etc.) to warm the new cache key without
-    # waiting for the next scheduled run.
 
 jobs:
-  warm:
+  canary:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -26,15 +31,24 @@ jobs:
             exit 1
           fi
           echo "url=$url" >> "$GITHUB_OUTPUT"
-          echo "Warming: $url"
+          echo "Probing: $url"
 
-      - name: Warm cache
+      - name: Probe reachability (non-failing canary)
         run: |
-          # Backend can take 5-8s on cold miss (GitHub API enumeration).
-          # --max-time 30 is generous; --retry covers the rare flap.
-          curl -sS \
+          # Records an external-vantage reachability result. Fails ONLY on a real
+          # backend error (5xx). A connection timeout (status 000) is Hostinger's
+          # edge dropping this Azure runner IP — warming is handled by srv-apps,
+          # so treat it as a soft warning, not a failure.
+          status=$(curl -sS \
             --max-time 30 \
             --retry 2 --retry-delay 10 --retry-all-errors \
             -o /dev/null \
-            -w "status=%{http_code} time=%{time_total}s size=%{size_download}B\n" \
-            "${{ steps.url.outputs.url }}"
+            -w "%{http_code}" \
+            "${{ steps.url.outputs.url }}" || true)
+          echo "status=$status"
+          case "$status" in
+            200)    echo "Reachable from this runner; cache hit served." ;;
+            000|"") echo "::warning::stats.lepaux.com unreachable from this Azure runner (Hostinger edge / path flap). Warming runs on srv-apps; not failing." ;;
+            5*)     echo "::error::stats backend returned HTTP $status"; exit 1 ;;
+            *)      echo "::warning::unexpected HTTP $status from stats.lepaux.com (not failing)" ;;
+          esac
