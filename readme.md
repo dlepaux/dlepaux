@@ -16,6 +16,9 @@ Started writing code professionally in 2013. Still hands-on by choice — web da
 
 [**docker-exporter**](https://github.com/dlepaux/docker-exporter) — Lightweight Rust Prometheus exporter for Docker container metrics. Built for ARM64 + cgroup v2, multi-arch image on GHCR.
 
+<!-- downloads: GHCR exposes no public pull-count API. Currently sourced from ghcr-badge.elias.eu.org (live HTML-scrape of the package page's "Total downloads"; a layer-download tally, not unique pulls). backage (ipitio/backage) is starred and will serve sturdier static JSON at https://ipitio.github.io/backage/dlepaux/docker-exporter.json (query $.downloads) once its crawler indexes — swap the url below to it then. -->
+[![ghcr downloads](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fghcr-badge.elias.eu.org%2Fapi%2Fdlepaux%2Fdocker-exporter&query=%24.downloadCount&style=flat&label=downloads&color=2496ED)](https://github.com/dlepaux/docker-exporter/pkgs/container/docker-exporter) [![stars](https://img.shields.io/github/stars/dlepaux/docker-exporter?style=flat&color=yellow)](https://github.com/dlepaux/docker-exporter)
+
 ---
 
 ### Stack
