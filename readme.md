@@ -1,6 +1,6 @@
 ## David Lepaux
 
-**Tech Lead** in Geneva, Switzerland. 13 years building web platforms — luxury, sports, e-commerce, media.
+**Tech Lead** in Lausanne, Switzerland. 13 years building web platforms — luxury, sports, e-commerce, media.
 
 Started writing code professionally in 2013. Still hands-on by choice — web day to day (React, Next.js, TypeScript), systems work on the side (Rust, lower-level primitives, the parts you only see when the runtime stops helping).
 
