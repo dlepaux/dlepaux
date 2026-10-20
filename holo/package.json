@@ -1,0 +1,10 @@
+{
+  "name": "holo",
+  "private": true,
+  "description": "Hologram exploded-view loops of the 3D-printed cases, rendered headless.",
+  "type": "module",
+  "dependencies": {
+    "playwright-core": "1.56.1",
+    "three": "0.180.0"
+  }
+}

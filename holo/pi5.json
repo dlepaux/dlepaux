@@ -1,0 +1,133 @@
+{
+ "pieces": [
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/lid-0-a0.stl",
+   "open": "/pi5/stl/lid-0-a20.stl",
+   "delay": 0.0
+  },
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/module-0-a0.stl",
+   "open": "/pi5/stl/module-0-a20.stl",
+   "delay": 0.26
+  },
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/tray-0-a0.stl",
+   "open": "/pi5/stl/tray-0-a20.stl",
+   "delay": 0.26
+  },
+  {
+   "kind": "board",
+   "closed": "/pi5/stl/board-0-a0.stl",
+   "open": "/pi5/stl/board-0-a20.stl",
+   "delay": 0.26
+  },
+  {
+   "kind": "fan",
+   "closed": "/pi5/stl/fan-0-a0.stl",
+   "open": "/pi5/stl/fan-0-a20.stl",
+   "delay": 0.26
+  },
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/filter-0-a0.stl",
+   "open": "/pi5/stl/filter-0-a20.stl",
+   "delay": 0.26
+  },
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/module-1-a0.stl",
+   "open": "/pi5/stl/module-1-a20.stl",
+   "delay": 0.17
+  },
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/tray-1-a0.stl",
+   "open": "/pi5/stl/tray-1-a20.stl",
+   "delay": 0.17
+  },
+  {
+   "kind": "board",
+   "closed": "/pi5/stl/board-1-a0.stl",
+   "open": "/pi5/stl/board-1-a20.stl",
+   "delay": 0.17
+  },
+  {
+   "kind": "fan",
+   "closed": "/pi5/stl/fan-1-a0.stl",
+   "open": "/pi5/stl/fan-1-a20.stl",
+   "delay": 0.17
+  },
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/filter-1-a0.stl",
+   "open": "/pi5/stl/filter-1-a20.stl",
+   "delay": 0.17
+  },
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/module-2-a0.stl",
+   "open": "/pi5/stl/module-2-a20.stl",
+   "delay": 0.08
+  },
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/tray-2-a0.stl",
+   "open": "/pi5/stl/tray-2-a20.stl",
+   "delay": 0.08
+  },
+  {
+   "kind": "board",
+   "closed": "/pi5/stl/board-2-a0.stl",
+   "open": "/pi5/stl/board-2-a20.stl",
+   "delay": 0.08
+  },
+  {
+   "kind": "fan",
+   "closed": "/pi5/stl/fan-2-a0.stl",
+   "open": "/pi5/stl/fan-2-a20.stl",
+   "delay": 0.08
+  },
+  {
+   "kind": "case",
+   "closed": "/pi5/stl/filter-2-a0.stl",
+   "open": "/pi5/stl/filter-2-a20.stl",
+   "delay": 0.08
+  }
+ ],
+ "fov": 30,
+ "camDist": 620,
+ "camLift": 0.35,
+ "camStart": 0.6,
+ "bloom": 0.6,
+ "spaceMax": 20,
+ "styles": {
+  "case": {
+   "color": "#38d6ff",
+   "face": 1.0,
+   "edge": 0.35,
+   "edgeAngle": 25
+  },
+  "board": {
+   "color": "#ffb45c",
+   "face": 0.6,
+   "edge": 0.18,
+   "edgeAngle": 40
+  },
+  "fan": {
+   "color": "#7fe8ff",
+   "face": 0.4,
+   "edge": 0.12,
+   "edgeAngle": 40
+  }
+ },
+ "hud": {
+  "title": "<b>PI5-RUNNERS</b><span class='dim'>STACKABLE CASE \u00b7 3\u00d7 RASPBERRY PI 5</span>",
+  "foot": "ENVELOPE 115.9 \u00d7 68 \u00d7 182.4 MM<br><span class='dim'>PRINTS WITHOUT SUPPORTS</span>",
+  "foot2": "<span class='amber'>\u0394T \u2248 9.7 K</span> ABOVE AMBIENT<br><span class='dim'>40 MM NOCTUA NF-A4x10 PER SLOT</span>",
+  "param": "ASSEMBLY_SPACE"
+ },
+ "zoom": 0.8
+}

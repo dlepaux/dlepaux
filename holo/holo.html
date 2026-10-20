@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; background: #03070c; overflow: hidden; }
+  canvas { display: block; }
+  #hud { position: fixed; inset: 0; pointer-events: none; color: #8fe9ff;
+    font: 500 15px/1.35 "SF Mono", Menlo, monospace; letter-spacing: 0.12em; }
+  .corner { position: absolute; width: 38px; height: 38px; border: 2px solid #38d6ff; opacity: .55; }
+  .tl { top: 28px; left: 28px; border-right: 0; border-bottom: 0; }
+  .tr { top: 28px; right: 28px; border-left: 0; border-bottom: 0; }
+  .bl { bottom: 28px; left: 28px; border-right: 0; border-top: 0; }
+  .br { bottom: 28px; right: 28px; border-left: 0; border-top: 0; }
+  .title { position: absolute; top: 58px; left: 64px; }
+  .title b { display: block; font-size: 34px; letter-spacing: .2em; color: #e6fbff;
+    text-shadow: 0 0 14px #38d6ff; margin-bottom: 6px; }
+  .read { position: absolute; top: 62px; right: 64px; text-align: right; }
+  .read .v { font-size: 30px; color: #e6fbff; text-shadow: 0 0 12px #38d6ff; }
+  .read .bar { margin-top: 8px; width: 220px; height: 4px; background: #0d2a36; margin-left: auto; }
+  .read .bar i { display: block; height: 100%; background: #38d6ff; box-shadow: 0 0 10px #38d6ff; }
+  .foot { position: absolute; bottom: 58px; left: 64px; opacity: .85; }
+  .foot2 { position: absolute; bottom: 58px; right: 64px; text-align: right; opacity: .85; }
+  .dim { opacity: .55; }
+  .amber { color: #ffb45c; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "/node_modules/three/build/three.module.js",
+  "three/addons/": "/node_modules/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="hud">
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="title" id="title"></div>
+  <div class="read"><div class="dim" id="param"></div><div class="v" id="v">00.0 MM</div><div class="bar"><i id="bar"></i></div></div>
+  <div class="foot" id="foot"></div>
+  <div class="foot2" id="foot2"></div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const cfg = await (await fetch(new URLSearchParams(location.search).get('cfg'))).json();
+document.getElementById('title').innerHTML = cfg.hud.title;
+document.getElementById('foot').innerHTML = cfg.hud.foot;
+document.getElementById('foot2').innerHTML = cfg.hud.foot2;
+document.getElementById('param').textContent = cfg.hud.param;
+
+const W = innerWidth, H = innerHeight;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setSize(W, H);
+renderer.setClearColor(0x03070c, 1);
+document.body.prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(cfg.fov ?? 32, W / H, 1, 5000);
+
+// Hologram skin: nearly invisible face-on, bright at the silhouette, with a scan band
+// sweeping up. Additive, so overlapping parts read as light, not as solid plastic.
+const holo = (color, strength) => new THREE.ShaderMaterial({
+  uniforms: { uColor: { value: new THREE.Color(color) }, uTime: { value: 0 }, uS: { value: strength },
+              uScanY: { value: 0 } },
+  vertexShader: `
+    varying vec3 vN; varying vec3 vV; varying float vY;
+    void main() {
+      vec4 wp = modelMatrix * vec4(position, 1.0);
+      vN = normalize(mat3(modelMatrix) * normal);
+      vV = normalize(cameraPosition - wp.xyz);
+      vY = wp.y;
+      gl_Position = projectionMatrix * viewMatrix * wp;
+    }`,
+  fragmentShader: `
+    uniform vec3 uColor; uniform float uS; uniform float uScanY;
+    varying vec3 vN; varying vec3 vV; varying float vY;
+    void main() {
+      float f = pow(1.0 - abs(dot(normalize(vN), normalize(vV))), 2.2);
+      float scan = exp(-pow((vY - uScanY) / 6.0, 2.0));
+      float lines = 0.75 + 0.25 * step(0.5, fract(vY * 0.5));
+      float a = (0.004 + f * 0.05 + scan * 0.03) * lines * uS;
+      gl_FragColor = vec4(uColor * a, 1.0);
+    }`,
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+});
+
+const root = new THREE.Group();
+root.rotation.x = -Math.PI / 2;   // OpenSCAD is Z-up, three is Y-up
+scene.add(root);
+
+const loader = new STLLoader();
+const load = (url) => new Promise((ok, ko) => loader.load(url, ok, undefined, ko));
+const center = (g) => { g.computeBoundingBox(); return g.boundingBox.getCenter(new THREE.Vector3()); };
+
+const pieces = [];
+const holoMats = [];
+for (const p of cfg.pieces) {
+  const [g0, g1] = await Promise.all([load(p.closed), load(p.open)]);
+  // Each piece only translates when the stack opens, so its whole motion is the shift
+  // of its centre between the two renders. The CAD stays the only owner of the explode.
+  const delta = center(g1).sub(center(g0));
+  g1.dispose();
+  const style = cfg.styles[p.kind];
+  const obj = new THREE.Group();
+  const mat = holo(style.color, style.face);
+  holoMats.push(mat);
+  obj.add(new THREE.Mesh(g0, mat));
+  obj.add(new THREE.LineSegments(new THREE.EdgesGeometry(g0, style.edgeAngle),
+    new THREE.LineBasicMaterial({ color: style.color, transparent: true, opacity: style.edge,
+      blending: THREE.AdditiveBlending, depthWrite: false })));
+  root.add(obj);
+  pieces.push({ obj, delta, delay: p.delay });
+}
+
+// Frame the closed stack, then put a projector ring under it.
+const box = new THREE.Box3().setFromObject(root);
+const mid = box.getCenter(new THREE.Vector3());
+const size = box.getSize(new THREE.Vector3());
+root.position.sub(new THREE.Vector3(mid.x, box.min.y, mid.z));
+// Measure the fully open layout once, so framing works whichever axis the CAD explodes along.
+pieces.forEach((pc) => pc.obj.position.copy(pc.delta));
+root.updateMatrixWorld(true);
+const openBox = new THREE.Box3().setFromObject(root);
+pieces.forEach((pc) => pc.obj.position.set(0, 0, 0));
+const closedC = new THREE.Vector3(0, size.y / 2, 0);
+const openC = openBox.getCenter(new THREE.Vector3());
+const zoomOpen = openBox.getSize(new THREE.Vector3()).length() / size.length();
+const R = Math.max(size.x, size.z) * 0.9;
+const ringMat = new THREE.LineBasicMaterial({ color: 0x38d6ff, transparent: true, opacity: .35,
+  blending: THREE.AdditiveBlending });
+for (const [r, o] of [[R, .45], [R * 1.25, .25], [R * 1.6, .12]]) {
+  const pts = []; for (let i = 0; i <= 128; i++) { const a = i / 128 * Math.PI * 2; pts.push(new THREE.Vector3(Math.cos(a) * r, -2, Math.sin(a) * r)); }
+  const l = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), ringMat.clone());
+  l.material.opacity = o; scene.add(l);
+}
+const ticks = [];
+for (let i = 0; i < 72; i++) {
+  const a = i / 72 * Math.PI * 2, r0 = R * 1.25, r1 = r0 + (i % 6 ? 6 : 16);
+  ticks.push(new THREE.Vector3(Math.cos(a) * r0, -2, Math.sin(a) * r0), new THREE.Vector3(Math.cos(a) * r1, -2, Math.sin(a) * r1));
+}
+scene.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(ticks), ringMat));
+
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), cfg.bloom ?? 0.6, 0.4, 0.35));
+composer.addPass(new OutputPass());
+
+const clamp = (x) => Math.min(1, Math.max(0, x));
+const ease = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+// 0 closed, 1 open: hold, open, hold, close, hold. Equal at both ends, so it loops.
+const openness = (p) => p < .12 ? 0 : p < .42 ? (p - .12) / .30 : p < .62 ? 1 : p < .92 ? 1 - (p - .62) / .30 : 0;
+
+window.renderFrame = (p) => {
+  const raw = openness(p);
+  // Camera and readout follow the most-open piece, so nothing leaves frame while a
+  // late piece is still travelling and the readout only reaches 0 once all have landed.
+  let eg = 0;
+  for (const pc of pieces) {
+    const e = ease(clamp((raw - pc.delay) / (1 - 0.3)));
+    pc.obj.position.copy(pc.delta).multiplyScalar(e);
+    eg = Math.max(eg, e);
+  }
+  const a = cfg.camStart + p * Math.PI * 2;
+  const dist = cfg.camDist * (1 + (zoomOpen - 1) * (cfg.zoom ?? 0.45) * eg);
+  const look = closedC.clone().lerp(openC, eg);
+  camera.position.set(look.x + Math.cos(a) * dist, look.y + dist * cfg.camLift, look.z + Math.sin(a) * dist);
+  camera.lookAt(look);
+  const scanY = (p * 3 % 1) * (size.y + (openBox.max.y - size.y) * eg) * 1.1;
+  for (const m of holoMats) m.uniforms.uScanY.value = scanY;
+  const v = cfg.spaceMax * eg;
+  document.getElementById('v').textContent = v.toFixed(1).padStart(4, '0') + ' MM';
+  document.getElementById('bar').style.width = (eg * 100) + '%';
+  composer.render();
+};
+window.ready = true;
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{
+ "pieces": [
+  {
+   "kind": "case",
+   "closed": "/hex/stl/dust-a0.stl",
+   "open": "/hex/stl/dust-a40.stl",
+   "delay": 0
+  },
+  {
+   "kind": "case",
+   "closed": "/hex/stl/face-a0.stl",
+   "open": "/hex/stl/face-a40.stl",
+   "delay": 0
+  },
+  {
+   "kind": "case",
+   "closed": "/hex/stl/fan-a0.stl",
+   "open": "/hex/stl/fan-a40.stl",
+   "delay": 0.08
+  },
+  {
+   "kind": "fan",
+   "closed": "/hex/stl/noctua-a0.stl",
+   "open": "/hex/stl/noctua-a40.stl",
+   "delay": 0.08
+  },
+  {
+   "kind": "case",
+   "closed": "/hex/stl/back-bottom-a0.stl",
+   "open": "/hex/stl/back-bottom-a40.stl",
+   "delay": 0.16
+  },
+  {
+   "kind": "case",
+   "closed": "/hex/stl/back-top-a0.stl",
+   "open": "/hex/stl/back-top-a40.stl",
+   "delay": 0.16
+  },
+  {
+   "kind": "board",
+   "closed": "/hex/stl/board-a0.stl",
+   "open": "/hex/stl/board-a40.stl",
+   "delay": 0.2
+  },
+  {
+   "kind": "case",
+   "closed": "/hex/stl/back-face-a0.stl",
+   "open": "/hex/stl/back-face-a40.stl",
+   "delay": 0.26
+  }
+ ],
+ "fov": 30,
+ "camDist": 700,
+ "camLift": 0.45,
+ "camStart": 0.9,
+ "bloom": 0.6,
+ "spaceMax": 40,
+ "zoom": 0.6,
+ "styles": {
+  "case": {
+   "color": "#38d6ff",
+   "face": 1.0,
+   "edge": 0.35,
+   "edgeAngle": 25
+  },
+  "board": {
+   "color": "#ffb45c",
+   "face": 0.6,
+   "edge": 0.18,
+   "edgeAngle": 40
+  },
+  "fan": {
+   "color": "#7fe8ff",
+   "face": 0.4,
+   "edge": 0.12,
+   "edgeAngle": 40
+  }
+ },
+ "hud": {
+  "param": "BODYASSEMBLY_SPACE",
+  "title": "<b>HEXRACK-SBC</b><span class='dim'>STACKABLE HONEYCOMB RACK \u00b7 ONE SBC PER UNIT</span>",
+  "foot": "ROCK 5B+ \u00b7 PI 5 + PIRONMAN 5 MAX<br><span class='dim'>DOVETAILS PRINTED, NO FASTENERS BETWEEN UNITS</span>",
+  "foot2": "<span class='amber'>92 MM NOCTUA NF-A9 PWM</span><br><span class='dim'>PLA OR PETG</span>"
+ }
+}
