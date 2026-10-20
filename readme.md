@@ -1,10 +1,24 @@
 ## David Lepaux
 
-**Tech Lead** in Lausanne, Switzerland. 13 years building web platforms — luxury, sports, e-commerce, media.
+**AI Engineer and Engineering Lead** in Lausanne, Switzerland. I build LLM agents that act safely on real systems: MCP servers, per-person auth, confirmation before any write. Before that, 13 years of web platforms for luxury, sports, e-commerce and media.
 
-Started writing code professionally in 2013. Still hands-on by choice — web day to day (React, Next.js, TypeScript), systems work on the side (Rust, lower-level primitives, the parts you only see when the runtime stops helping).
+Started writing code professionally in 2013. Still hands-on by choice, every day. Web in React, Next.js and TypeScript. Services and systems in Rust (lower-level primitives, the parts you only see when the runtime stops helping).
 
 **Worked with** FIBA · Visilab · Patek Philippe · Lausanne Tourisme · Publishing Factory
+
+---
+
+### Household AI assistant
+
+A chat assistant that acts as each person in a household (their own token, every action filed in their name) and asks before anything changes. Few deliberate tools, each person's language, failures counted and alerting. Media is the test bed. The pattern is the point.
+
+[**kavita-mcp**](https://github.com/dlepaux/kavita-mcp) — MCP server in Rust. Search your Kavita libraries and send a book to your Kindle, as yourself, after a confirmation.
+
+[![stars](https://img.shields.io/github/stars/dlepaux/kavita-mcp?style=flat&color=yellow)](https://github.com/dlepaux/kavita-mcp)
+
+[**seerr-mcp**](https://github.com/dlepaux/seerr-mcp) — MCP server in Rust. Search and request films and series in Seerr, as yourself, after a confirmation.
+
+[![stars](https://img.shields.io/github/stars/dlepaux/seerr-mcp?style=flat&color=yellow)](https://github.com/dlepaux/seerr-mcp)
 
 ---
 
@@ -25,11 +39,11 @@ Started writing code professionally in 2013. Still hands-on by choice — web da
 
 **Day to day**
 
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black) ![Next.js](https://img.shields.io/badge/Next.js-000?style=flat&logo=next.js&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-000?style=flat&logo=rust&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black) ![Next.js](https://img.shields.io/badge/Next.js-000?style=flat&logo=next.js&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 
-**Going deeper**
+**Infra and AI**
 
-![Rust](https://img.shields.io/badge/Rust-000?style=flat&logo=rust&logoColor=white) ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat&logo=ansible&logoColor=white)
+![MCP](https://img.shields.io/badge/MCP-000?style=flat&logo=modelcontextprotocol&logoColor=white) ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat&logo=ansible&logoColor=white)
 
 **By volume** (public + private repos)
 
