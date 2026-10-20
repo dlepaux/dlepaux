@@ -45,7 +45,7 @@ Parametric cases in OpenSCAD, printed and tested. Each loop is rendered from the
 <td width="50%"><a href="https://dlepaux.github.io/hexrack-sbc/"><img src="assets/hexrack-sbc-holo.gif" alt="hexrack-sbc: a hexagonal SBC enclosure separating front to back into its printed sections, drawn as a hologram"></a></td>
 </tr>
 <tr>
-<td valign="top"><a href="https://dlepaux.github.io/pi5-runners/"><b>pi5-runners</b></a><br>A stack for three Raspberry Pi 5s running as GitHub Actions runners. One 40 mm Noctua per module, nothing screwed together but the fans, every part prints without supports.</td>
+<td valign="top"><a href="https://github.com/dlepaux/pi5-runners"><b>pi5-runners</b></a><br>A stack for three Raspberry Pi 5s running as GitHub Actions runners. One 40 mm Noctua per module, nothing screwed together but the fans, every part prints without supports.</td>
 <td valign="top"><a href="https://github.com/dlepaux/hexrack-sbc"><b>hexrack-sbc</b></a><br>A modular honeycomb rack, one SBC per unit behind a 92 mm Noctua. The configurator engraves labels with real OpenSCAD compiled to WebAssembly.</td>
 </tr>
 </table>
